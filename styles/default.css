@@ -1,0 +1,137 @@
+/* element imports */
+@import "./elements/buttons.css";
+@import "./elements/cards.css";
+@import "./elements/details.css";
+@import "./elements/icons.css";
+@import "./elements/inputs.css";
+@import "./elements/tables.css";
+
+/* site imports */
+@import "./site/main.css";
+@import "./site/header.css";
+@import "./site/footer.css";
+@import "./site/fonts.css";
+
+/* pages imports */
+@import "./pages/page-buttons.css";
+@import "./pages/page-cards.css";
+@import "./pages/page-color.css";
+@import "./pages/page-data-visualization.css";
+@import "./pages/page-details.css";
+@import "./pages/page-forms.css";
+@import "./pages/page-typo.css";
+@import "./pages/page-tables.css";
+@import "./pages/page-layout.css";
+
+:root {
+  /* 
+    Colors can be used by referencing back to it.
+    background-color: var(--colorName);
+  */
+  --white: #fff;
+  --light-grey: #f2f2f2;
+  --grey: #d3d3d3;
+  --black: #000;
+
+  --harpy-6: #000d42;
+  --harpy-5: #001568;
+  --harpy-4: #003d8c;
+  --harpy-3: #004aad; /* The original logo color */
+  --harpy-2: #4569d2;
+  --harpy-1: #a9c3ff;
+
+  --caution-1: #f08080;
+  --caution-2: #ec5b5b;
+  --caution-3: #e72929;
+  --warning-1: #f8f883;
+  --success-1: #90ee90;
+}
+
+/* Global styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Arvo", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-family: "Nokora", Sans-serif;
+  color: var(--harpy-6);
+}
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-shadow {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
