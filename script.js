@@ -1,3 +1,6 @@
+import { renderDistance } from "./pages/distance.js";
+import { renderChart2 } from "./pages/proportionSatisfaction.js";
+
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
   const responseText = await response.text();
@@ -5,6 +8,16 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
 
   // Set new page url
   if (!doNotPushState) history.pushState({}, "", `#${pageName}`);
+
+  switch (pageName) {
+    case "distance":
+      return await renderDistance();
+    case "proportionSatisfaction":
+      return await renderChart2();
+
+    default:
+      return;
+  }
 };
 
 const activeStateHandler = (anchor) => {
@@ -16,6 +29,21 @@ const activeStateHandler = (anchor) => {
       link.classList.remove("active");
     }
   });
+};
+
+const mobileNavSetup = () => {
+  const navButton = document.getElementById("mobileNavButton");
+  const navContainer = document.getElementById("NavContainer");
+
+  const openNav = () => {
+    if (navContainer.classList.contains("active")) {
+      navContainer.classList.remove("active");
+    } else {
+      navContainer.classList.add("active");
+    }
+  };
+
+  navButton.addEventListener("click", openNav);
 };
 
 const onInit = () => {
@@ -41,17 +69,19 @@ const onInit = () => {
     });
   });
 
-  // Load page from url or color page on page load
+  // Load page from url or distance page on page load
   let urlPage = window.location.hash.substring(1);
   setPage(urlPage || "distance", dynamicDiv, urlPage.length > 0);
-  activeStateHandler(anchorsObject[urlPage || "color"]);
+  activeStateHandler(anchorsObject[urlPage || "distance"]);
 
   // Set up event listener for browser back button to go to previously viewed page
   window.addEventListener("popstate", (event) => {
-    let pageName = window.location.hash.substring(1) || "color";
+    let pageName = window.location.hash.substring(1) || "distance";
     activeStateHandler(anchorsObject[pageName]);
     setPage(pageName, dynamicDiv, true);
   });
+
+  mobileNavSetup();
 };
 
 window.addEventListener("load", onInit);
