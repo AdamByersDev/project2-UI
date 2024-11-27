@@ -28,6 +28,22 @@ const activeStateHandler = (anchor) => {
   });
 };
 
+const mobileNavSetup = () => {
+  const navButton = document.getElementById("mobileNavButton");
+  const navContainer = document.getElementById("NavContainer");
+
+  const openNav = () => {
+    if (navContainer.classList.contains('active')) {
+      navContainer.classList.remove("active");
+    } else {
+      navContainer.classList.add("active");
+    }
+  }
+
+  navButton.addEventListener("click", openNav);
+  
+};
+
 const onInit = () => {
   // create the logic for the dynamic content on screen based on user interaction
   const dynamicDiv = document.getElementById("dynamicContent");
@@ -51,17 +67,19 @@ const onInit = () => {
     });
   });
 
-  // Load page from url or color page on page load
+  // Load page from url or distance page on page load
   let urlPage = window.location.hash.substring(1);
   setPage(urlPage || "distance", dynamicDiv, urlPage.length > 0);
-  activeStateHandler(anchorsObject[urlPage || "color"]);
+  activeStateHandler(anchorsObject[urlPage || "distance"]);
 
   // Set up event listener for browser back button to go to previously viewed page
   window.addEventListener("popstate", (event) => {
-    let pageName = window.location.hash.substring(1) || "color";
+    let pageName = window.location.hash.substring(1) || "distance";
     activeStateHandler(anchorsObject[pageName]);
     setPage(pageName, dynamicDiv, true);
   });
+
+  mobileNavSetup();
 };
 
 window.addEventListener("load", onInit);
