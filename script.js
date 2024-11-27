@@ -1,3 +1,5 @@
+import { renderDistance } from "./pages/distance.js";
+
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
   const responseText = await response.text();
@@ -5,6 +7,14 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
 
   // Set new page url
   if (!doNotPushState) history.pushState({}, "", `#${pageName}`);
+
+  switch (pageName) {
+    case "distance":
+      return await renderDistance();
+
+    default:
+      return;
+  }
 };
 
 const activeStateHandler = (anchor) => {
