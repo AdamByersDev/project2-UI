@@ -1,4 +1,5 @@
 import { renderDistance } from "./pages/distance.js";
+import { startSatisfactionByCategory } from "./pages/satisfactionbycategory.js";
 
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
@@ -11,6 +12,9 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   switch (pageName) {
     case "distance":
       return await renderDistance();
+    
+    case "satisfactionbycategory":
+      return await startSatisfactionByCategory();
 
     default:
       return;
