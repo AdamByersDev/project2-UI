@@ -1,5 +1,6 @@
 import { renderDistance } from "./pages/distance.js";
-import { renderChart2 } from "./pages/proportionSatisfaction.js";
+import { renderChart2 } from "./pages/satisfactionLevel.js";
+import { renderChart5 } from "./pages/satisfactionRate.js";
 
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
@@ -12,8 +13,10 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   switch (pageName) {
     case "distance":
       return await renderDistance();
-    case "proportionSatisfaction":
+    case "satisfactionLevel":
       return await renderChart2();
+    case "satisfactionRate":
+      return await renderChart5();
 
     default:
       return;

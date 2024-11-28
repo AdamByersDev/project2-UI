@@ -6,7 +6,6 @@ export const renderChart2 = async () => {
     id: customer.id,
     satisfaction: customer.satisfaction,
   }));
-  console.log(data);
 
   const satisfiedCustomers = data.filter(
     (customer) => customer.satisfaction === "satisfied"
@@ -37,14 +36,14 @@ export const renderChart2 = async () => {
   ];
 
   // handling svg canva
-  const width = 1000;
-  const height = 800;
+  const width = 500;
+  const height = 600;
 
   const radius = Math.min(width, height) / 3; // chart size
 
   // Create SVG container
   const svg = d3
-    .select("#proportionSatisfaction")
+    .select("#satisfactionLevel")
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -91,7 +90,7 @@ export const renderChart2 = async () => {
 
   // Add legends
   const legendGroup = d3
-    .select("#proportionSatisfaction svg")
+    .select("#satisfactionLevel svg")
     .append("g")
     .attr("transform", `translate(${width / 2 - 100}, ${50})`); // Position above the chart
 
