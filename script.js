@@ -1,4 +1,5 @@
 import { renderDistance } from "./pages/distance.js";
+import { renderChart2 } from "./pages/proportionSatisfaction.js";
 
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
@@ -11,6 +12,8 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   switch (pageName) {
     case "distance":
       return await renderDistance();
+    case "proportionSatisfaction":
+      return await renderChart2();
 
     default:
       return;
@@ -33,15 +36,14 @@ const mobileNavSetup = () => {
   const navContainer = document.getElementById("NavContainer");
 
   const openNav = () => {
-    if (navContainer.classList.contains('active')) {
+    if (navContainer.classList.contains("active")) {
       navContainer.classList.remove("active");
     } else {
       navContainer.classList.add("active");
     }
-  }
+  };
 
   navButton.addEventListener("click", openNav);
-  
 };
 
 const onInit = () => {
