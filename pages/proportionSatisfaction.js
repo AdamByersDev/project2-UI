@@ -118,7 +118,7 @@ export const renderChart2 = async () => {
         .attr("y", 10)
         .attr("dy", "0.35em")
         .text((d) => d.category)
-        .style("font-size", "20px")
+        .style("font-size", "25px")
         .style("alignment-baseline", "middle");
     });
 };
