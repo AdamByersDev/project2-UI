@@ -1,49 +1,46 @@
 export const renderChart5 = async () => {
   // handling data
-  const data = (
-    await d3.csv("../data/customer_satisfaction.csv", d3.autoType)
-  ).map((customer) => ({
-    id: customer.id,
-    classSeat: customer.Class,
-    satisfactionRate: customer["Average Satisfaction"],
-  }));
+  const data = await d3.csv("../data/customer_satisfaction.csv", (d) => {
+    d3.autoType(d);
 
-  const ecoClass = data.filter((customer) => customer.classSeat === "Eco");
+    return {
+      classSeat: d.Class === "Eco" ? "Economy Class" : "Business Class",
+      satisfactionRate: d["Average Satisfaction"],
+    };
+  });
 
-  const getEcoAverage = () => {
-    var sumOfEcoRate = 0;
-    ecoClass.forEach((customer) => {
-      sumOfEcoRate += customer.satisfactionRate;
-    });
-    const ecoAverage = (sumOfEcoRate / ecoClass.length).toFixed(2);
-    return Number(ecoAverage);
-  };
-
-  const businessClass = data.filter(
-    (customer) => customer.classSeat === "Business"
-  );
-
-  const getBusinessAverage = () => {
-    var sumOfBusinessRate = 0;
-    businessClass.forEach((customer) => {
-      sumOfBusinessRate += customer.satisfactionRate;
-    });
-    const businessAverage = (sumOfBusinessRate / businessClass.length).toFixed(
-      2
-    );
-    return Number(businessAverage);
-  };
-
-  const barChartData = [
-    {
-      category: "Economy Class",
-      value: getEcoAverage(),
-    },
-    {
-      category: "Business Class",
-      value: getBusinessAverage(),
-    },
-  ];
+  const barChartData = data
+    .reduce(
+      (acc, cur) => {
+        if (cur.classSeat === "Economy Class") {
+          acc[0] = {
+            ...acc[0],
+            sum: acc[0].sum + cur.satisfactionRate,
+            count: acc[0].count + 1,
+          };
+        } else {
+          acc[1] = {
+            ...acc[1],
+            sum: acc[1].sum + cur.satisfactionRate,
+            count: acc[1].count + 1,
+          };
+        }
+        return acc;
+      },
+      [
+        {
+          category: "Economy Class",
+          sum: 0,
+          count: 0,
+        },
+        {
+          category: "Business Class",
+          sum: 0,
+          count: 0,
+        },
+      ]
+    )
+    .map(({ category, sum, count }) => ({ category, value: sum / count }));
 
   // handling svg canva
   const width = 500;
@@ -121,7 +118,7 @@ export const renderChart5 = async () => {
     .data(barChartData)
     .enter()
     .append("text")
-    .text((d) => d.value)
+    .text((d) => d.value.toFixed(2))
     .attr("x", (d) => x(d.category) + x.bandwidth() / 2)
     .attr("y", (d) => y(d.value) - 5)
     .attr("text-anchor", "middle")
