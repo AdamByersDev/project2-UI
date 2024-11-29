@@ -8,8 +8,6 @@ export const renderScatterPlot = async () => {
     };
   });
 
-  console.log(data); // chackin debiggin it's fine
-
   //step 1: create SVG, use margins
   const margin = {
     top: 20,
