@@ -77,5 +77,5 @@ export const renderScatterPlot = async () => {
     .attr("cx", (d) => xScale(d.satisfaction))
     .attr("cy", (d) => yScale(d.delay))
     .attr("r", 5)
-    .style("fill", "var(--harpy-3)");
+    .attr("fill", "var(--harpy-3)");
 };
