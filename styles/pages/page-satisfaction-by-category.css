@@ -1,0 +1,6 @@
+.satisfaction-by-category .bar {
+  fill: var(--harpy-3);
+}
+.satisfaction-by-category .bar-text {
+  fill: var(--white);
+}

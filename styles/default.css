@@ -12,7 +12,10 @@
 @import "./site/footer.css";
 @import "./site/fonts.css";
 
-/* pages imports */
+/* page imports */
+@import "./pages/page-satisfaction-by-category.css";
+
+/* old page imports */
 @import "./pages/page-buttons.css";
 @import "./pages/page-cards.css";
 @import "./pages/page-color.css";
