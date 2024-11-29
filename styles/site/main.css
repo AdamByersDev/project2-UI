@@ -79,8 +79,11 @@ main .container {
   overflow: hidden;
   &.active {
     max-height: fit-content;
-    padding-top: 0rem;
+    margin-top: 0.5rem;
     padding-bottom: 0.4rem;
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    padding: 1rem;
   }
 }
 

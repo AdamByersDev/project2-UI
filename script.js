@@ -44,6 +44,15 @@ const mobileNavSetup = () => {
   };
 
   navButton.addEventListener("click", openNav);
+
+  //handle situation where the user changed screen width without closing the nav button
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      navContainer.classList.remove("active");
+    } else {
+      navContainer.classList.add("active");
+    }
+  });
 };
 
 const onInit = () => {
