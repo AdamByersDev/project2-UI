@@ -1,7 +1,8 @@
 export const renderDistance = async () => {
-  const data = (
-    await d3.csv("../data/customer_satisfaction.csv", d3.autoType)
-  ).map((d) => ({ id: d.id, flightDistance: d["Flight Distance"] }));
+  const data = await d3.csv("../data/customer_satisfaction.csv", (d) => {
+    d3.autoType(d);
+    return { id: d.id, flightDistance: d["Flight Distance"] };
+  });
 
   const width = 1000;
   const height = 800;
@@ -57,7 +58,8 @@ export const renderDistance = async () => {
         .clone()
         .attr("x2", width - margin.left - margin.right)
         .attr("opacity", 0.1)
-    );
+    )
+    .call((g) => g.selectAll(".tick text").attr("font-size", "18"));
 
   // Add an invisible layer for the interactive tip.
   const tooltip = {
