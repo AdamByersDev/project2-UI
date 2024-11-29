@@ -1,5 +1,9 @@
+import { renderDisloyalCustomers } from "./pages/disloyal-customers.js";
 import { renderDistance } from "./pages/distance.js";
 import { startSatisfactionByCategory } from "./pages/satisfactionbycategory.js";
+import { renderChart2 } from "./pages/satisfactionLevel.js";
+import { renderChart5 } from "./pages/satisfactionRate.js";
+import { renderScatterPlot } from "./pages/late-minutes-satisfaction.js";
 
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
@@ -11,11 +15,19 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
 
   switch (pageName) {
     case "distance":
-      return await renderDistance();
-    
+      return await renderDistance();    
     case "satisfactionbycategory":
       return await startSatisfactionByCategory();
-
+    case "satisfactionLevel":
+      return await renderChart2();
+    case "satisfactionRate":
+      return await renderChart5();
+    case "disloyal-customers":
+      return await renderDisloyalCustomers();
+    case "late-minutes-satisfaction":
+      return await renderScatterPlot();
+      
+    // Add the other cases here
     default:
       return;
   }
@@ -37,15 +49,23 @@ const mobileNavSetup = () => {
   const navContainer = document.getElementById("NavContainer");
 
   const openNav = () => {
-    if (navContainer.classList.contains('active')) {
+    if (navContainer.classList.contains("active")) {
       navContainer.classList.remove("active");
     } else {
       navContainer.classList.add("active");
     }
-  }
+  };
 
   navButton.addEventListener("click", openNav);
-  
+
+  //handle situation where the user changed screen width without closing the nav button
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      navContainer.classList.remove("active");
+    } else {
+      navContainer.classList.add("active");
+    }
+  });
 };
 
 const onInit = () => {
