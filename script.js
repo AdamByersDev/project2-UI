@@ -1,6 +1,7 @@
 import { renderDisloyalCustomers } from "./pages/disloyal-customers.js";
 import { renderDistance } from "./pages/distance.js";
-import { renderChart2 } from "./pages/proportionSatisfaction.js";
+import { renderChart2 } from "./pages/satisfactionLevel.js";
+import { renderChart5 } from "./pages/satisfactionRate.js";
 import { renderScatterPlot } from "./pages/late-minutes-satisfaction.js";
 
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
@@ -14,14 +15,17 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   switch (pageName) {
     case "distance":
       return await renderDistance();
-    case "proportionSatisfaction":
+    case "satisfactionLevel":
       return await renderChart2();
+    case "satisfactionRate":
+      return await renderChart5();
     case "disloyal-customers":
       return await renderDisloyalCustomers();
     case "late-minutes-satisfaction":
       return await renderScatterPlot();
+      
     // Add the other cases here
-
+      
     default:
       return;
   }
