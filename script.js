@@ -1,3 +1,4 @@
+import { renderDisloyalCustomers } from "./pages/disloyal-customers.js";
 import { renderDistance } from "./pages/distance.js";
 import { renderChart2 } from "./pages/proportionSatisfaction.js";
 
@@ -14,6 +15,8 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
       return await renderDistance();
     case "proportionSatisfaction":
       return await renderChart2();
+    case "disloyal-customers":
+      return await renderDisloyalCustomers();
 
     default:
       return;
