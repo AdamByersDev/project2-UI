@@ -1,4 +1,6 @@
-export const renderDistance = async () => {
+import { ChartCard } from "../dashboard.js";
+
+const renderChart = async (id) => {
   const data = await d3.csv("../data/customer_satisfaction.csv", (d) => {
     d3.autoType(d);
     return { id: d.id, flightDistance: d["Flight Distance"] };
@@ -25,7 +27,7 @@ export const renderDistance = async () => {
     .range([height - margin.bottom, margin.top]);
 
   const svg = d3
-    .select("#distance")
+    .select(`#${id}`)
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
@@ -118,3 +120,9 @@ export const renderDistance = async () => {
     .on("pointermove", pointerMoved)
     .on("pointerleave", pointerLeft);
 };
+
+export default new ChartCard(
+  "travelDistance",
+  "Travel Distance",
+  renderChart
+);
