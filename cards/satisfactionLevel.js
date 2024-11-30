@@ -1,4 +1,6 @@
-export const renderChart2 = async () => {
+import { ChartCard } from "../dashboard.js";
+
+export const renderChart = async (id) => {
   // handling data
   const data = (
     await d3.csv("../data/customer_satisfaction.csv", d3.autoType)
@@ -43,7 +45,7 @@ export const renderChart2 = async () => {
 
   // Create SVG container
   const svg = d3
-    .select("#satisfactionLevel")
+    .select(`#${id}`)
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -90,7 +92,7 @@ export const renderChart2 = async () => {
 
   // Add legends
   const legendGroup = d3
-    .select("#satisfactionLevel svg")
+    .select(`#${id} svg`)
     .append("g")
     .attr("transform", `translate(${width / 2 - 100}, ${50})`); // Position above the chart
 
@@ -121,3 +123,9 @@ export const renderChart2 = async () => {
         .style("alignment-baseline", "middle");
     });
 };
+
+export default new ChartCard(
+  "satisfactionLevel",
+  "Satisfaction Level",
+  renderChart
+)
