@@ -24,7 +24,7 @@ export const renderDisloyalCustomers = async () => {
     top: 60,
     right: 80,
     left: 80,
-    bottom: 40,
+    bottom: 50,
   };
 
   const xScale = d3
@@ -50,7 +50,7 @@ export const renderDisloyalCustomers = async () => {
       "var(--harpy-1)",
       "var(--harpy-2)",
       "var(--harpy-3)",
-      "var(--harpy-4)",
+      "var(--harpy-5)",
     ])
     .unknown("#CCC");
 
@@ -80,11 +80,54 @@ export const renderDisloyalCustomers = async () => {
     .append("g")
     .attr("transform", `translate(0, ${height - margin.bottom})`)
     .call(d3.axisBottom(xScale))
-    .call((g) => g.selectAll(".tick text").attr("font-size", "18"));
+    .call((g) => g.selectAll(".tick text").attr("font-size", "18"))
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", 50)
+    .attr("fill", "black")
+    .attr("text-anchor", "middle")
+    .attr("font-size", 18)
+    .text("Customer ID");
 
   svg
     .append("g")
     .attr("transform", `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(yScale))
-    .call((g) => g.selectAll(".tick text").attr("font-size", "18"));
+    .call((g) => g.selectAll(".tick text").attr("font-size", "18"))
+    .append("text")
+    .attr("x", -height / 2)
+    .attr("y", -60)
+    .attr("transform", "rotate(-90)")
+    .attr("text-anchor", "middle")
+    .attr("fill", "black")
+    .attr("font-size", 18)
+    .text("Ticket Price");
+
+  const legendBandWidth = 30;
+
+  const legendGroup = svg
+    .append("g")
+    .attr("transform", `translate(${width}, 0)`)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(colorScale.domain().reverse())
+    .join("g")
+    .attr(
+      "transform",
+      (_, i) => `translate(0, ${i * legendBandWidth + i * 1})`
+    );
+
+  legendGroup
+    .append("rect")
+    .attr("x", -legendBandWidth)
+    .attr("width", legendBandWidth)
+    .attr("height", legendBandWidth)
+    .attr("fill", (d) => colorScale(d));
+
+  legendGroup
+    .append("text")
+    .attr("x", -legendBandWidth - 8)
+    .attr("y", legendBandWidth / 2)
+    .attr("dy", "0.35em")
+    .text((d) => d);
 };
