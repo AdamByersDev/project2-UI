@@ -4,24 +4,28 @@
   flex-direction: column;
   border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  min-width: 12rem;
+  min-width: min(12rem, 100%);
   min-height: 12rem;
 }
 
 .card-sm {
   width: 16rem;
+  max-width: 100%;
 }
 
 .card-md {
   width: 20rem;
+  max-width: 100%;
 }
 
 .card-lg {
   width: 24rem;
+  max-width: 100%;
 }
 
 .card-xl {
   width: 28rem;
+  max-width: 100%;
 }
 
 .card-visual {
