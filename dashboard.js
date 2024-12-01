@@ -3,7 +3,7 @@
  * @constructor
  * 
  * @param {string} id - A unique ID that wil be used for the card's content.
- *                    - The recommended format is a shortened form of the card name.
+ *                    - The recommended format is a kebab case form of the file name.
  * 
  * @param {string} name The name that should be displayed on the card in the dashboard
  * 
