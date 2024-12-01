@@ -27,7 +27,7 @@ export function ChartCard(id, name, builder, cardContent) {
     const card = d3
       .select("#dashboardCards")
       .append("div")
-      .attr("class", "card card-xl");
+      .attr("class", "card card-lg");
 
     const cardVisual = card
       .append("div")
