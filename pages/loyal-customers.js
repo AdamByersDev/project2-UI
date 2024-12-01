@@ -60,7 +60,7 @@ export const renderLoyalCustomers = async () => {
     .attr("font-size", "24")
     .attr("font-weight", "bold")
     .attr("fill", "black")
-    .text(`${Math.round(percentage)}%`);
+    .text(`${Math.round(percentage)} / ${rawData.length}`);
 
 
   svg

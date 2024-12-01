@@ -52,7 +52,7 @@ export const renderNoDelayCustomers = async () => {
     .attr("font-size", "24")
     .attr("font-weight", "bold")
     .attr("fill", "black")
-    .text(`${totalNoDelayCustomers}`);
+    .text(`${totalNoDelayCustomers} / ${rawData.length}`);
 
 
   svg
