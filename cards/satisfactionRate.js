@@ -1,4 +1,6 @@
-export const renderChart5 = async () => {
+import { ChartCard } from "../dashboard.js";
+
+const renderChart = async (id) => {
   // handling data
   const data = await d3.csv("../data/customer_satisfaction.csv", (d) => {
     d3.autoType(d);
@@ -54,7 +56,7 @@ export const renderChart5 = async () => {
   };
 
   const svg = d3
-    .select("#satisfactionRate")
+    .select(`#${id}`)
     .append("svg")
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .attr("viewBox", [0, 0, width, height]);
@@ -125,3 +127,9 @@ export const renderChart5 = async () => {
     .style("font-size", "14px")
     .style("font-weight", "bold");
 };
+
+export default new ChartCard(
+  "satisfactionRate",
+  "Average Satisfaction Rate by Seat Class",
+  renderChart
+);
