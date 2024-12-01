@@ -1,4 +1,6 @@
-export const renderScatterPlot = async () => {
+import { ChartCard } from "../dashboard.js";
+
+const renderScatterPlot = async (id) => {
   const data = await d3.csv("../data/customer_satisfaction.csv", (d) => {
     d3.autoType(d);
 
@@ -20,7 +22,7 @@ export const renderScatterPlot = async () => {
   const height = 600;
 
   const svg = d3
-    .select("#chart4")
+    .select(`#${id}`)
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
@@ -77,3 +79,9 @@ export const renderScatterPlot = async () => {
     .attr("r", 5)
     .attr("fill", "var(--harpy-3)");
 };
+
+export default new ChartCard(
+  "lateMinutesSatisfaction",
+  "Total Delay VS Departure and Arrival Time Satisfaction",
+  renderScatterPlot
+);

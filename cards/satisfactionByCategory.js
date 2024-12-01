@@ -151,7 +151,7 @@ const renderGraph = (id, data, title) => {
 
 export default new ChartCard(
   "satisfactionByCategory",
-  "Satisfaction By Category",
+  "Satisfaction by Category",
   cardBuilder,
   renderData
 );
