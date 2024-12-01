@@ -4,6 +4,9 @@ import { startSatisfactionByCategory } from "./pages/satisfactionbycategory.js";
 import { renderChart2 } from "./pages/satisfactionLevel.js";
 import { renderChart5 } from "./pages/satisfactionRate.js";
 import { renderScatterPlot } from "./pages/late-minutes-satisfaction.js";
+import { renderLoyalCustomers } from "./pages/loyal-customers.js";
+import { renderFlightDistance } from "./pages/flight-distance.js";
+import { renderNoDelayCustomers } from "./pages/no-delay-customers.js";
 
 const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
   const response = await fetch(`pages/${pageName}.html`);
@@ -26,6 +29,12 @@ const setPage = async (pageName, dynamicDiv, doNotPushState = false) => {
       return await renderDisloyalCustomers();
     case "late-minutes-satisfaction":
       return await renderScatterPlot();
+    case "loyal-customers":
+      return await renderLoyalCustomers();
+    case "flight-distance":
+      return await renderFlightDistance();
+    case "no-delay-customers":
+      return await renderNoDelayCustomers();
       
     // Add the other cases here
     default:
