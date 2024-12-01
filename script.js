@@ -3,7 +3,7 @@ import satisfactionLevel from "./cards/satisfactionLevel.js"; // Chart 2
 import satisfactionByCategory from "./cards/satisfactionByCategory.js"; // Chart 3
 import lateMinutesSatisfaction from "./cards/lateMinutesSatisfaction.js"; // Chart 4
 import satisfactionRate from "./cards/satisfactionRate.js"; // Chart 5
-import { renderDisloyalCustomers } from "./cards/disloyal-customers.js"; // Chart 6
+import disloyalCustomers from "./cards/disloyalCustomers.js"; // Chart 6
 
 const onInit = () => {
   travelDistance.createCard();
@@ -11,6 +11,7 @@ const onInit = () => {
   satisfactionByCategory.createCard();
   lateMinutesSatisfaction.createCard();
   satisfactionRate.createCard();
+  disloyalCustomers.createCard();
 };
 
 window.addEventListener("load", onInit);

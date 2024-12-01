@@ -1,4 +1,6 @@
-export const renderDisloyalCustomers = async () => {
+import { ChartCard } from "../dashboard.js";
+
+const renderChart = async (id) => {
   const rawData = await d3.csv("../data/customer_satisfaction.csv", (d) => {
     if (d["Customer Type"] !== "disloyal Customer") return;
     d3.autoType(d);
@@ -55,7 +57,7 @@ export const renderDisloyalCustomers = async () => {
     .unknown("#CCC");
 
   const svg = d3
-    .select("#disloyal-customers")
+    .select(`#${id}`)
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
@@ -131,3 +133,9 @@ export const renderDisloyalCustomers = async () => {
     .attr("dy", "0.35em")
     .text((d) => d);
 };
+
+export default new ChartCard(
+  "disloyalCustomers",
+  "Disloyal Customers",
+  renderChart
+);
