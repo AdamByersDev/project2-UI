@@ -1,9 +1,9 @@
-import { renderDisloyalCustomers } from "./cards/disloyal-customers.js";
-import travelDistance from "./cards/travelDistance.js";
-import satisfactionByCategory from "./cards/satisfactionByCategory.js";
-import satisfactionLevel from "./cards/satisfactionLevel.js";
-import { renderChart5 } from "./cards/satisfactionRate.js";
-import lateMinutesSatisfaction from "./cards/lateMinutesSatisfaction.js";
+import travelDistance from "./cards/travelDistance.js"; // Chart 1
+import satisfactionLevel from "./cards/satisfactionLevel.js"; // Chart 2
+import satisfactionByCategory from "./cards/satisfactionByCategory.js"; // Chart 3
+import lateMinutesSatisfaction from "./cards/lateMinutesSatisfaction.js"; // Chart 4
+import { renderChart5 } from "./cards/satisfactionRate.js"; // Chart 5
+import { renderDisloyalCustomers } from "./cards/disloyal-customers.js"; // Chart 6
 
 const onInit = () => {
   travelDistance.createCard();
