@@ -1,10 +1,27 @@
-export const startSatisfactionByCategory = () => {
-  renderSatisfactionByCategory();
-  document.getElementById('satisfactionCategorySelect').addEventListener('change', renderSatisfactionByCategory);
+import { ChartCard } from "../dashboard.js";
+
+const renderData = (idPrefix) => {
+  return `
+  <h3 id="${idPrefix}Title"></h3>
+    <div class="input-box">
+      <select id="${idPrefix}Select">
+        <option value="checkinService">Checkin service</option>
+        <option value="onlineBooking">Ease of online booking</option>
+        <option value="gateLocation">Gate location</option>
+        <option value="onboardService">On-board service</option>
+        <option value="baggageHandling">Baggage handling</option>
+      </select>
+    </div>
+  `;
+};
+
+const cardBuilder = (id, idPrefix) => {
+  renderChart(id, idPrefix);
+  document.getElementById(`${idPrefix}Select`).addEventListener('change', () => renderChart(id, idPrefix));
 }
 
-export const renderSatisfactionByCategory = async () => {
-  const selector = document.getElementById('satisfactionCategorySelect');
+const renderChart = async (id, idPrefix) => {
+  const selector = document.getElementById(`${idPrefix}Select`);
   const selection = selector.value;
 
   let data = await d3.csv("../data/customer_satisfaction.csv", d3.autoType);
@@ -47,17 +64,17 @@ export const renderSatisfactionByCategory = async () => {
     }
   }); 
 
-  console.log(finalData)
 
-  renderGraph(finalData, `${title || columnName} satisfaction`)
+  d3.select(`#${idPrefix}Title`)
+    .text(`${title || columnName} satisfaction`);
+
+  renderGraph(id, finalData, `${title || columnName} satisfaction`)
 }
 
-const renderGraph = (data, title) => {
+const renderGraph = (id, data, title) => {
 
-  d3.select("#satisfactionByCategory")
+  d3.select(`#${id}`)
     .html('')
-    .append("h3")
-    .text(title)
 
   const size = { x:1000, y:500 };
   const margin = { top: 20, bottom: 50, left: 80, right: 50 };
@@ -75,7 +92,7 @@ const renderGraph = (data, title) => {
     .padding(.1);
 
   const svg = d3
-    .select("#satisfactionByCategory")
+    .select(`#${id}`)
     .attr("style", `max-width: ${size.x}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, size.x, size.y]);
@@ -127,6 +144,14 @@ const renderGraph = (data, title) => {
     .attr("x", 0)
     .attr("y", 0)
     .attr("width", d => xScale(d[1]))
-    .attr("height", yScale.bandwidth());
+    .attr("height", yScale.bandwidth())
+    .attr("style", "fill: var(--harpy-3)");
 
-}
+};
+
+export default new ChartCard(
+  "satisfactionByCategory",
+  "Satisfaction By Category",
+  cardBuilder,
+  renderData
+);

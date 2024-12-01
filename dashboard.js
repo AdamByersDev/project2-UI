@@ -7,8 +7,8 @@
  * 
  * @param {string} name The name that should be displayed on the card in the dashboard
  * 
- * @param {function(string): void} builder - A function that will generate the chart in the card using the string supplied for the chart location ID.
- *                                         - This function will run last so include any interactivity in this as well using the ID as a prefix.
+ * @param {function(string, string): void} builder - A function that will generate the chart in the card using the string supplied for the chart location ID.
+ *                                         - This function will run last so include any interactivity in this as well using the second string as a prefix.
  * 
  * @param {function(string): string=} cardContent - A function that will create HTML content that will be displayed in the text section of the card.
  *                                                - Use the string supplied as an ID for any content that must be accessed through the builder function.
@@ -37,19 +37,19 @@ export function ChartCard(id, name, builder, cardContent) {
     const cardData = card
       .append("div")
       .attr("class", "card-data");
-
-    cardData
-      .append("h2")
-      .text(this.name);
     
     if (this.cardContent) {
       cardData
         .html(this.cardContent(this.id));
     }
+
+    cardData
+      .insert("h2", ":first-child")
+      .text(this.name);
     
     console.log("")
 
-    this.builder(`${this.id}Chart`);
+    this.builder(`${this.id}Chart`, this.id);
 
   }
 
