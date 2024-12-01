@@ -76,13 +76,15 @@ const renderGraph = (id, data, title) => {
   d3.select(`#${id}`)
     .html('')
 
-  const size = { x:1000, y:500 };
-  const margin = { top: 20, bottom: 50, left: 80, right: 50 };
+  const size = { x:400, y:300 };
+  const margin = { top: 20, bottom: 30, left: 50, right: 20 };
   const innerSize = { x: size.x - margin.left - margin.right, y: size.y - margin.top - margin.bottom}
+
+  let maximumNumber = Math.ceil( d3.max( Object.values(data) ) / 5 ) * 5;
 
   const xScale = d3
     .scaleLinear()
-    .domain([0, Math.ceil( d3.max( Object.values(data) ) / 5 ) * 5])
+    .domain([0, maximumNumber])
     .range([0, innerSize.x]);
 
   const yScale = d3
@@ -100,33 +102,31 @@ const renderGraph = (id, data, title) => {
   svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${innerSize.y})`)
-    .call(d3.axisBottom(xScale))
-    .attr("font-size", "1.4rem")
+    .call(d3.axisBottom(xScale).ticks(5))
+    .attr("font-size", "1rem")
   
   svg
     .append("text")
     .text("Rating")
     .attr("x", -innerSize.y / 2)
-    .attr("y", margin.left - 40)
+    .attr("y", margin.left/3)
     .attr("text-anchor", "middle")
-    .attr("font-size", "1.6rem")
-    .attr("font-weight", 700)
+    .attr("font-size", "1.2rem")
     .attr("transform", "rotate(-90)")
   
   svg
     .append("text")
     .text("Number of Customers")
     .attr("x", size.x / 2)
-    .attr("y", innerSize.y + 60)
+    .attr("y", innerSize.y + margin.top + margin.bottom / 1.5)
     .attr("text-anchor", "middle")
-    .attr("font-size", "1.6rem")
-    .attr("font-weight", 700)
+    .attr("font-size", "1.2rem")
 
   svg
     .append("g")
     .attr("transform", `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(yScale))
-    .attr("font-size", "1.4rem");
+    .attr("font-size", "1rem");
   
   let bars = svg
     .append("g")
@@ -146,6 +146,15 @@ const renderGraph = (id, data, title) => {
     .attr("width", d => xScale(d[1]))
     .attr("height", yScale.bandwidth())
     .attr("style", "fill: var(--harpy-3)");
+
+  bars
+    .append("text")
+    .attr("x", d => xScale(d[1] || 0)-5)
+    .attr("y", yScale.bandwidth() / 1.8)
+    .attr("fill", "#fff")
+    .attr("text-anchor", "end")
+    .attr("dominant-baseline", "middle")
+    .text(d => d[1])
 
 };
 
