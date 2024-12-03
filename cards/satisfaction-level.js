@@ -38,10 +38,10 @@ export const renderChart = async (id) => {
   ];
 
   // handling svg canva
-  const width = 500;
+  const width = 600;
   const height = 600;
 
-  const radius = Math.min(width, height) / 3; // chart size
+  const radius = Math.min(width, height) / 2.6; // chart size
 
   // Create SVG container
   const svg = d3
@@ -50,7 +50,7 @@ export const renderChart = async (id) => {
     .append("svg")
     .attr("viewBox", [0, 0, width, height])
     .append("g")
-    .attr("transform", `translate(${width / 2}, ${height / 2 + 50})`); // Move down for legend space
+    .attr("transform", `translate(${width / 2}, ${height / 2 + 70})`); // Move down for legend space
 
   // Define color scale
   const color = d3
