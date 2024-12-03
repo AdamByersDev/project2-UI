@@ -1,4 +1,6 @@
-export const renderLoyalCustomers = async () => {
+import { ChartCard } from "../dashboard.js";
+
+const renderChart = async (id) => {
   const rawData = await d3.csv("../data/customer_satisfaction.csv", d3.autoType);
 
 
@@ -18,7 +20,7 @@ export const renderLoyalCustomers = async () => {
   const radius = 200;
 
   const svg = d3
-    .select("#loyal-customers") 
+    .select(`#${id}`) 
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
@@ -72,3 +74,9 @@ export const renderLoyalCustomers = async () => {
     .attr("fill", "black")
     .text("Loyal Customers");
 };
+
+export default new ChartCard(
+  "loyalCustomerCount",
+  "Loyal Customer Count",
+  renderChart
+);
