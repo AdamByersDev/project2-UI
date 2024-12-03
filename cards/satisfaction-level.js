@@ -94,7 +94,7 @@ export const renderChart = async (id) => {
   const legendGroup = d3
     .select(`#${id} svg`)
     .append("g")
-    .attr("transform", `translate(${width / 2 - 100}, ${50})`); // Position above the chart
+    .attr("transform", `translate(${width / 2 - 130}, ${0})`); // Position above the chart
 
   legendGroup
     .selectAll("g")
@@ -128,4 +128,4 @@ export default new ChartCard(
   "satisfactionLevel",
   "Satisfaction Level",
   renderChart
-)
+);
