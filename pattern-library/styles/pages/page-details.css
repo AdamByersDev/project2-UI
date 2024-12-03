@@ -1,0 +1,14 @@
+.details h2 {
+  margin-bottom: 1rem;
+}
+
+.details .category {
+  padding: 2rem 1rem;
+  &:not(:last-child) {
+    border-bottom: 1px var(--harpy-4) solid;
+  }
+}
+
+.details .category h3 {
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,45 @@
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+main .container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+}
+
+.page-link {
+  color: var(--harpy-3);
+  cursor: pointer;
+  list-style: none;
+  border-bottom: 1px solid var(--harpy-4);
+}
+
+.page-link.active {
+  background-color: var(--harpy-4);
+}
+
+.page-link.active a {
+  color: #fff;
+  font-weight: 700;
+}
+
+.page-link a {
+  color: var(--harpy-5);
+  padding: 1rem 0.5rem;
+  display: block;
+  width: 10.8rem;
+}
+
+.nav-general {
+  margin-bottom: 3rem;
+}
+
+.navigation {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}

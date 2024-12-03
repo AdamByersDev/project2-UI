@@ -1,0 +1,77 @@
+details {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  border: 0.2rem solid var(--harpy-3);
+  border-radius: 15px;
+  position: relative;
+  &:hover {
+    background-color: var(--harpy-1);
+  }
+}
+
+details[open] {
+  border-radius: 15px 15px 0 0;
+  background-color: var(--harpy-1);
+}
+
+summary {
+  padding: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  cursor: pointer;
+}
+
+details .content{
+  display: none;
+}
+
+details[open] .content{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-grey);
+  outline: 0.2rem solid var(--harpy-3);
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  border-radius: 0 0 15px 15px;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.details-primary {
+  background-color: var(--harpy-3);
+  color: var(--white);
+  &:hover {
+    background-color: var(--harpy-4);
+  }
+}
+
+.details-primary[open] {
+  background-color: var(--harpy-4);
+}
+
+.details-primary .content {
+  color: black;
+}
+
+.details-caution {
+  background-color: var(--caution-1);
+  border-color: var(--caution-1);
+  &:hover {
+    background-color: var(--caution-2);
+  }
+}
+
+.details-caution[open] {
+  background-color: var(--caution-2);
+}
+
+.details-caution .content {
+  color: black;
+  outline-color: var(--caution-1) !important;
+}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 2 - Group 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harpy Airlines - Dashboard</title>
     <link rel="stylesheet" href="./styles/default.css" />
     <link
       rel="shortcut icon"
@@ -20,53 +20,15 @@
         <h1>Harpy Airline Dashboard</h1>
       </div>
     </header>
-    <main>
-      <div class="container">
-        <div class="navigation">
-          <button class="btn nav-button" id="mobileNavButton">
-            <img src="./assets/images/iconsSVG/menu.svg" alt="Menu" />
-          </button>
-          <nav class="nav-elements" id="NavContainer">
-            <h3>Charts</h3>
-            <ul>
-              <li class="page-link">
-                <a href="distance">Travel Distance</a>
-              </li>
-              <li class="page-link">
-                <a href="satisfactionLevel">Satisfaction Level (Overall)</a>
-              </li>
-              <li class="page-link">
-                <a href="satisfactionbycategory">Satisfaction by Category</a>
-              </li>
-              <li class="page-link">
-                <a href="satisfactionRate">Satisfaction by Class</a>
-              </li>
-              <li class="page-link">
-                <a href="disloyal-customers">Disloyal Customers</a>
-              </li>
-              <li class="page-link">
-                <a href="late-minutes-satisfaction">Late Minute Satisfaction</a>
-              </li>
-              <li class="page-link">
-                <a href="loyal-customers">Loyal Customers</a>
-              </li>
-              <li class="page-link">
-                <a href="flight-distance">Flight Distance</a>
-              </li>
-              <li class="page-link">
-                <a href="no-delay-customers">Customers Without Delay</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div id="dynamicContent"></div>
-      </div>
+    <main class="container">
+      <section class="card-group" id="dashboardCards"></section>
     </main>
     <footer>
       <div class="container">
         <div class="footer-title">
           <h5>© Harpy Airlines</h5>
           <h5>INFO 3171: UI/DATA VISUALIZATION</h5>
+          <p><a href="./pattern-library/#color">Pattern Library</a></p>
         </div>
         <div class="footer-members">
           <h5>Group 8 Members:</h5>
