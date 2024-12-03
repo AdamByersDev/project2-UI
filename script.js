@@ -5,6 +5,7 @@ import lateMinutesSatisfaction from "./cards/late-minutes-satisfaction.js"; // C
 import satisfactionRate from "./cards/satisfaction-rate.js"; // Chart 5
 import disloyalCustomers from "./cards/disloyal-customers.js"; // Chart 6
 import loyalCustomers from "./cards/loyal-customers.js"; // Chart 7
+import flightDistance from "./cards/flight-distance.js";
 
 const onInit = () => {
   travelDistance.createCard();
@@ -14,6 +15,7 @@ const onInit = () => {
   satisfactionRate.createCard();
   disloyalCustomers.createCard();
   loyalCustomers.createCard();
+  flightDistance.createCard();
 };
 
 window.addEventListener("load", onInit);

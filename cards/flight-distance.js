@@ -1,4 +1,6 @@
-export const renderFlightDistance = async () => {
+import { ChartCard } from "../dashboard.js";
+
+const renderChart = async (id) => {
   const rawData = await d3.csv("../data/customer_satisfaction.csv", d3.autoType);
 
   
@@ -12,7 +14,7 @@ export const renderFlightDistance = async () => {
   const radius = Math.min(width, height) / 2;
 
   const svg = d3
-    .select("#flight-distance")
+    .select(`#${id}`)
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -58,3 +60,9 @@ export const renderFlightDistance = async () => {
     .attr("fill", "black")
     .text("Total Flight Distance");
 };
+
+export default new ChartCard(
+  "flightDistance",
+  "Total Flight Distance",
+  renderChart
+);
