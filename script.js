@@ -6,7 +6,7 @@ import satisfactionRate from "./cards/satisfaction-rate.js"; // Chart 5
 import disloyalCustomers from "./cards/disloyal-customers.js"; // Chart 6
 import loyalCustomers from "./cards/loyal-customers.js"; // Chart 7
 import flightDistance from "./cards/flight-distance.js"; // Chart 8
-import noDelayCustomers from "./cards/no-delay-customers.js";
+import noDelayCustomers from "./cards/no-delay-customers.js"; // Chart 9
 
 const onInit = () => {
   travelDistance.createCard();
