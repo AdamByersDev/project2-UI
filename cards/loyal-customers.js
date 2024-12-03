@@ -15,9 +15,9 @@ const renderChart = async (id) => {
   const targetValue = 100; 
   const percentage = (totalLoyalCustomers / targetValue) * 100;
 
-  const width = 800;
+  const width = 600;
   const height = 300;
-  const radius = 200;
+  const radius = 250;
 
   const svg = d3
     .select(`#${id}`) 
@@ -31,7 +31,7 @@ const renderChart = async (id) => {
   svg
     .append("path")
     .datum({
-      innerRadius: radius - 30,
+      innerRadius: radius - 60,
       outerRadius: radius,
       startAngle: -Math.PI / 2,
       endAngle: Math.PI / 2,
@@ -44,7 +44,7 @@ const renderChart = async (id) => {
   svg
     .append("path")
     .datum({
-      innerRadius: radius - 30,
+      innerRadius: radius - 60,
       outerRadius: radius,
       startAngle: -Math.PI / 2,
       endAngle: (-Math.PI / 2) + (percentage / 100) * Math.PI,
@@ -59,7 +59,7 @@ const renderChart = async (id) => {
     .attr("x", width / 2)
     .attr("y", height / 2 + 20)
     .attr("text-anchor", "middle")
-    .attr("font-size", "24")
+    .attr("font-size", "32")
     .attr("font-weight", "bold")
     .attr("fill", "black")
     .text(`${Math.round(percentage)} / ${rawData.length}`);
@@ -70,7 +70,7 @@ const renderChart = async (id) => {
     .attr("x", width / 2)
     .attr("y", height - 10)
     .attr("text-anchor", "middle")
-    .attr("font-size", "16")
+    .attr("font-size", "1.6rem")
     .attr("fill", "black")
     .text("Loyal Customers");
 };
