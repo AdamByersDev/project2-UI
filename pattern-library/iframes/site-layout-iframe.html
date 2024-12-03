@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/default.css" />
+    <title>Site General Layout</title>
+    <style>
+      main {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+      }
+
+      nav {
+        width: 100px;
+        background-color: var(--harpy-5);
+        display: flex;
+        align-items: center;
+      }
+
+      nav h3 {
+        color: var(--white);
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        line-height: 100px;
+      }
+
+      .section-name h2 {
+        margin-bottom: 1rem;
+      }
+
+      .section-name .category {
+        padding: 2rem 1rem;
+      }
+
+      .section-name .category:not(:last-child) {
+        border-bottom: 1px var(--harpy-4) solid;
+      }
+
+      .section-name .category h3 {
+        margin-bottom: 1rem;
+      }
+
+      .section-name .category-content {
+        padding: 3rem 0;
+        background-color: var(--grey);
+      }
+
+      .section-name .category h4 {
+        text-align: center;
+      }
+
+      footer {
+        text-align: center;
+        background-color: var(--harpy-2);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Site Header</h1>
+    </header>
+    <main>
+      <nav><h3>Navigation</h3></nav>
+      <section class="section-name">
+        <h2>Section Title</h2>
+        <div class="container-shadow">
+          <div class="category">
+            <h3>Category Name</h3>
+            <div class="category-content">
+              <h4>Category content</h4>
+            </div>
+          </div>
+          <div class="category">
+            <h3>Category Name</h3>
+            <div class="category-content">
+              <h4>Category content</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer><h2>Site Footer</h2></footer>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+.colors-page .container-shadow {
+  padding: 3rem 2rem;
+}
+
+.color-content {
+  margin-top: 1.5rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+
+.color-type {
+  height: fit-content;
+}
+
+.color-type > div {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.color-icon {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 6rem;
+}
+
+.color {
+  width: 100%;
+  height: 5rem;
+  border-radius: 3px;
+  border-bottom: 1px solid black;
+}
+
+.color-name {
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* brand colors: */
+
+.c1 {
+  background-color: #004aad;
+}
+
+.c2 {
+  background-color: #a9c3ff;
+}
+
+.c11 {
+  background-color: #4569d2;
+}
+
+/* functional colors: */
+
+.c5 {
+  background-color: #000;
+}
+
+.c6 {
+  background-color: #d3d3d3;
+}
+
+.c7 {
+  background-color: #fff;
+}
+
+/* feedback colors: */
+
+.c8 {
+  background-color: #f08080;
+}
+
+.c9 {
+  background-color: #90ee90;
+}
+
+.c10 {
+  background-color: #f8f883;
+}

@@ -1,0 +1,10 @@
+.buttons .category {
+  padding: 2rem 1rem;
+  &:not(:last-child) {
+    border-bottom: 1px var(--harpy-4) solid;
+  }
+}
+
+.buttons .category h3 {
+  margin-bottom: 1rem;
+}

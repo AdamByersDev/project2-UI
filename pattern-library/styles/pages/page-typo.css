@@ -1,0 +1,95 @@
+/* default */
+
+.typo-page .container-shadow {
+  padding: 3rem 2rem;
+}
+ 
+.typo-category > h3 {
+  margin-bottom: 1rem;
+}
+
+.typo-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.typo-summary > p:nth-child(1) {
+  font-size: 50px;
+  padding: 1rem;
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  width: fit-content;
+  background-color: var(--harpy-2);
+  color: var(--white);
+}
+
+.typo-summary > p:nth-child(2) {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.typo-summary > p:nth-child(3) {
+  font-size: 15px;
+}
+
+/* TYPO HEADINGS CATEGORY */
+.t-headings {
+  font-family: "Nokora";
+  margin-bottom: 3rem;
+}
+
+.t-heading-examples {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.heading-sample {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.2rem;
+  border-bottom: 1px solid var(--harpy-4);
+  margin-bottom: 1rem;
+}
+
+.heading-sample > p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* TYPO CONTENT CATEGORY */
+.t-content {
+  font-family: "Arvo";
+}
+
+.t-content-example {
+  margin-top: 2rem;
+}
+
+.t-content-sample {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.2rem;
+  font-size: 17px;
+  gap: 1rem;
+}
+
+.t-content-sample > p:nth-child(1) {
+  width: 60%;
+}
+
+.t-content-sample > p:nth-child(2) {
+  font-size: 18px;
+  font-weight: 400;
+}

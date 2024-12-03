@@ -1,0 +1,76 @@
+.layout h2 {
+  margin-bottom: 1rem;
+}
+
+.layout .category h3 {
+  margin-bottom: 1rem;
+}
+
+.card-grid-modular {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 2rem;
+}
+
+.layout .card-grid-modular__card {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 0 1rem;
+}
+
+.layout .card-grid-modular img {
+  width: 300px;
+  height: 225px;
+  display: block;
+}
+
+.layout .category {
+  padding: 2rem 1rem;
+}
+
+.layout .category:not(:last-child) {
+  border-bottom: 1px var(--harpy-4) solid;
+}
+
+.layout .category h3 {
+  margin-bottom: 1rem;
+}
+
+.card-grid-hierarchical {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.card-grid-hierarchical .module-main {
+  grid-row: 1 / span 2;
+}
+
+.card-grid-hierarchical .module {
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background-color: var(--grey);
+  min-height: 300px;
+}
+
+@media only screen and (min-width: 992px) {
+  .card-grid-hierarchical {
+    max-width: 960px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+  }
+
+  .card-grid-hierarchical .module {
+    min-height: unset;
+  }
+
+  .card-grid-hierarchical .module-1 {
+    min-height: 500px;
+  }
+}
