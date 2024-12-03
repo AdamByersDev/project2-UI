@@ -6,8 +6,8 @@ const renderChart = async (id) => {
     return { id: d.id, flightDistance: d["Flight Distance"] };
   });
 
-  const width = 1000;
-  const height = 800;
+  const width = 600;
+  const height = 480;
 
   const margin = {
     top: 60,
