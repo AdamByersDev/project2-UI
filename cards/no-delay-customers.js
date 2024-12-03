@@ -1,5 +1,6 @@
+import { ChartCard } from "../dashboard.js";
 
-export const renderNoDelayCustomers = async () => {
+const renderChart = async (id) => {
   const rawData = await d3.csv("../data/customer_satisfaction.csv", d3.autoType);
 
 
@@ -17,7 +18,7 @@ export const renderNoDelayCustomers = async () => {
   const radius = Math.min(width, height) / 2;
 
   const svg = d3
-    .select("#no-delay-customers")
+    .select(`#${id}`)
     .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height])
@@ -63,3 +64,9 @@ export const renderNoDelayCustomers = async () => {
     .attr("fill", "black")
     .text("Customers Without Delay");
 };
+
+export default new ChartCard(
+  "customersWithoutDelays",
+  "Customers Without Delays",
+  renderChart
+);
