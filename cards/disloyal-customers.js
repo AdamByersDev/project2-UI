@@ -19,14 +19,14 @@ const renderChart = async (id) => {
 
   const stackData = stackGenerator(data);
 
-  const width = 1000;
-  const height = 800;
+  const width = 700;
+  const height = 600;
 
   const margin = {
     top: 60,
     right: 80,
-    left: 80,
-    bottom: 50,
+    left: 100,
+    bottom: 60,
   };
 
   const xScale = d3
@@ -82,27 +82,27 @@ const renderChart = async (id) => {
     .append("g")
     .attr("transform", `translate(0, ${height - margin.bottom})`)
     .call(d3.axisBottom(xScale))
-    .call((g) => g.selectAll(".tick text").attr("font-size", "18"))
+    .call((g) => g.selectAll(".tick text").attr("font-size", '1.6rem'))
     .append("text")
     .attr("x", width / 2)
     .attr("y", 50)
     .attr("fill", "black")
     .attr("text-anchor", "middle")
-    .attr("font-size", 18)
+    .attr("font-size", '1.6rem')
     .text("Customer ID");
 
   svg
     .append("g")
     .attr("transform", `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(yScale))
-    .call((g) => g.selectAll(".tick text").attr("font-size", "18"))
+    .call((g) => g.selectAll(".tick text").attr("font-size", '1.6rem'))
     .append("text")
     .attr("x", -height / 2)
-    .attr("y", -60)
+    .attr("y", -80)
     .attr("transform", "rotate(-90)")
     .attr("text-anchor", "middle")
     .attr("fill", "black")
-    .attr("font-size", 18)
+    .attr("font-size", '1.6rem')
     .text("Ticket Price");
 
   const legendBandWidth = 30;
@@ -130,12 +130,13 @@ const renderChart = async (id) => {
     .append("text")
     .attr("x", -legendBandWidth - 8)
     .attr("y", legendBandWidth / 2)
+    .attr("font-size", '1.6rem')
     .attr("dy", "0.35em")
     .text((d) => d);
 };
 
 export default new ChartCard(
   "disloyalCustomers",
-  "Disloyal Customers",
+  "Disloyal Customer Ticket Prices",
   renderChart
 );
