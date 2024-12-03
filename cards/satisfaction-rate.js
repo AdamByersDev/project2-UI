@@ -46,13 +46,13 @@ const renderChart = async (id) => {
 
   // handling svg canva
   const width = 500;
-  const height = 700;
+  const height = 500;
 
   const margin = {
-    top: 60,
-    right: 80,
+    top: 40,
+    right: 60,
     left: 80,
-    bottom: 200,
+    bottom: 40,
   };
 
   const svg = d3
@@ -96,13 +96,14 @@ const renderChart = async (id) => {
     .call(d3.axisBottom(x))
     .selectAll("text")
     .attr("text-anchor", "middle")
-    .style("font-size", "15px");
+    .style("font-size", "20px");
 
   // Add Y axis
   svg
     .append("g")
     .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y))
+    .style("font-size", "20px");
 
   // Y axis label
   svg
@@ -124,7 +125,7 @@ const renderChart = async (id) => {
     .attr("x", (d) => x(d.category) + x.bandwidth() / 2)
     .attr("y", (d) => y(d.value) - 5)
     .attr("text-anchor", "middle")
-    .style("font-size", "14px")
+    .style("font-size", "20px")
     .style("font-weight", "bold");
 };
 
