@@ -21,7 +21,6 @@ const renderChart = async (id) => {
 
   const svg = d3
     .select(`#${id}`) 
-    .attr("style", `max-width: ${width}px; max-height: ${height}px;`)
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
