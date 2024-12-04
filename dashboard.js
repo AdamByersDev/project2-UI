@@ -55,7 +55,7 @@ export class ChartCard {
       modalChartContainer.innerHTML = "";
 
       // Re-render the chart in the modal
-      this.builder("modalChartContainer", `${this.id}_modal`);
+      this.builder("modalChartContainer", `${this.id}`);
 
       modal.style.display = "block";
 
