@@ -29,7 +29,7 @@ export class ChartCard {
       .append("div")
       .attr("class", "card card-lg");
 
-    card
+    const chartContainer = card
       .append("div")
       .attr("class", "card-visual")
       .attr("id", `${this.id}Chart`);
@@ -43,5 +43,33 @@ export class ChartCard {
     cardData.insert("h2", ":first-child").text(this.name);
 
     this.builder(`${this.id}Chart`, this.id);
+
+    // Add click event to open modal
+    chartContainer.on("click", () => {
+      const modal = document.getElementById("chartModal");
+      const modalChartContainer = document.getElementById(
+        "modalChartContainer"
+      );
+
+      // Clear existing content
+      modalChartContainer.innerHTML = "";
+
+      // Re-render the chart in the modal
+      this.builder("modalChartContainer", `${this.id}_modal`);
+
+      modal.style.display = "block";
+
+      // Close modal functionality
+      const closeBtn = document.querySelector(".close");
+      closeBtn.onclick = () => {
+        modal.style.display = "none";
+      };
+
+      window.onclick = (event) => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    });
   };
 }
